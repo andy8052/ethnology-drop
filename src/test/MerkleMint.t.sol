@@ -70,4 +70,21 @@ contract Merkle is MerkleTest {
         hevm.warp(1634140801 + 2 days);
         minter.mintLeftover{value: 236 ether}(2950);
     }
+
+    function test_devMint() public {
+        minter.devMint(4);
+        assertEq(4, pass.balanceOf(address(this), 0));
+    }
+
+    function test_withdraw() public {
+        minter.mintPresale{value: 0.4 ether}(
+            presaleProof.amount,
+            presaleProof.index,
+            presaleProof.account,
+            presaleProof.proof
+        );
+        uint256 balance = address(this).balance;
+        minter.withdraw();
+        assertEq(balance + 0.4 ether, address(this).balance);
+    }
 }

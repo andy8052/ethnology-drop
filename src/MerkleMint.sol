@@ -128,4 +128,12 @@ contract MerkleMint is Ownable, ReentrancyGuard {
         token.mint(to, id, amount);
         emit Minted(index, msg.sender, amount);
     }
+
+    function devMint(uint256 amount) external onlyOwner {
+        token.mint(owner(), 0, amount);
+    }
+
+    function withdraw() external onlyOwner {
+        payable(owner()).transfer(address(this).balance);
+    }
 }

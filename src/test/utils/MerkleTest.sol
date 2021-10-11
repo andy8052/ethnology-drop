@@ -104,7 +104,7 @@ abstract contract MerkleTest is DSTest, ERC1155Holder {
         badProof.proof.push(bytes32(0x70a32d791c218c229f009e150f41d73464490d64ebe0f709840c97b2dd14d543));
         badProof.proof.push(bytes32(0x6fda1b6395e30cc9b663cb464a60fdfcc9057e1fd751742d4ca8737aa0114bc1));
         badProof.proof.push(bytes32(0xf0936c1d11078e4f0bf51870452ae6f0f4a212e280ba5d0130c47ff02783b90a));    
-    
-
     }
+
+    receive() external payable {}
 }
